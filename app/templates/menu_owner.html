@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о владельцах</title>
+    <style>
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-radius: 10px;
+            border-spacing: 0;
+            text-align: center;
+        }
+
+        th {
+            background: #BCEBDD;
+            color: white;
+            text-shadow: 0 1px 1px #2D2020;
+            padding: 10px 20px;
+        }
+
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+            border-right: none;
+        }
+
+        td {
+            padding: 10px 20px;
+            background: #F8E391;
+        }
+
+        tr:last-child td:first-child {
+            border-radius: 0 0 0 10px;
+        }
+
+        tr:last-child td:last-child {
+            border-radius: 0 0 10px 0;
+        }
+
+        tr td:last-child {
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+<center>
+
+        <table>
+            <tr>
+                <th>Имя</th>
+                <th>Тип организации</th>
+                <th>Адресс</th>
+                <th>Номер телефона</th>
+            </tr>
+
+            {% for owner in owners %}
+                <tr>
+                    <td>{{ owner.name }}</td>
+                    <td>{{ owner.type_of_organization }}</td>
+                    <td>{{ owner.address }}</td>
+                    <td>{{ owner.phone_number }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+    </center>
+</body>
+</html>
