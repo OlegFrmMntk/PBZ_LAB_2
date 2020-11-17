@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Информация о владельцах</title>
+    <title>Информация о выставках</title>
     <style>
         table {
             font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -63,23 +63,33 @@
         }
     </style>
 </head>
-<body style="background-image: url('https://ufagrad.info/wp-content/uploads/2019/09/dEt_TKBU2c.jpg')">
+<body style="background-image: url('https://cdn.popcake.tv/wp-content/uploads/2019/12/klava-koka-morgenshtern.png')">
 <center>
-
         <table>
             <tr>
-                <th>Имя</th>
-                <th>Тип организации</th>
-                <th>Адресс</th>
-                <th>Номер телефона</th>
+                <th>Название</th>
+                <th>Тип</th>
+                <th>Дата начала</th>
+                <th>Дата конца</th>
+                <th>Произведение искусства</th>
             </tr>
 
-            {% for owner in owners %}
+            {% for exhibition in exhibitions %}
                 <tr>
-                    <td>{{ owner.name }}</td>
-                    <td>{{ owner.type_of_organization }}</td>
-                    <td>{{ owner.address }}</td>
-                    <td>{{ owner.phone_number }}</td>
+                    <td>{{ exhibition.name }}</td>
+                    <td>{{ exhibition.type }}</td>
+                    <td>{{ exhibition.start_date }}</td>
+                    <td>{{ exhibition.end_date }}</td>
+
+                    {% for exh, artwork in artworks.items %}
+                        {% if exh == exhibition %}
+                            <td>
+                                {% for art in artwork %}
+                                    {{art.name}}<br>
+                                {% endfor %}
+                            </td>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
             {% endfor %}
 

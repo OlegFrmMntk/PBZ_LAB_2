@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:opacity="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Информация о владельцах</title>
+    <title>Информация о художниках</title>
     <style>
         table {
             font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -63,23 +63,25 @@
         }
     </style>
 </head>
-<body style="background-image: url('https://ufagrad.info/wp-content/uploads/2019/09/dEt_TKBU2c.jpg')">
+<body style="background-image: url('https://avatanplus.com/files/resources/original/5abe72761a98816277ef1d5d.jpg')">
 <center>
 
         <table>
             <tr>
                 <th>Имя</th>
-                <th>Тип организации</th>
-                <th>Адресс</th>
-                <th>Номер телефона</th>
+                <th>Дата рождения</th>
+                <th>Место рождения</th>
+                <th>Биография</th>
+                <th>Образование</th>
             </tr>
 
-            {% for owner in owners %}
+            {% for artist in artists %}
                 <tr>
-                    <td>{{ owner.name }}</td>
-                    <td>{{ owner.type_of_organization }}</td>
-                    <td>{{ owner.address }}</td>
-                    <td>{{ owner.phone_number }}</td>
+                    <td>{{ artist.name }}</td>
+                    <td>{{ artist.date_of_birth }}</td>
+                    <td>{{ artist.place_of_birth }}</td>
+                    <td>{{ artist.biography }}</td>
+                    <td>{{ artist.education }}</td>
                 </tr>
             {% endfor %}
 

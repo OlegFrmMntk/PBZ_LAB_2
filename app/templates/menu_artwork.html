@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:opacity="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Информация о владельцах</title>
+    <title>Информация о работах</title>
     <style>
         table {
             font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -63,23 +63,25 @@
         }
     </style>
 </head>
-<body style="background-image: url('https://ufagrad.info/wp-content/uploads/2019/09/dEt_TKBU2c.jpg')">
+<body style="background-image: url('https://icdn.lenta.ru/images/2020/05/29/13/20200529133310238/square_1280_24362d7a9c25836fca960264276e8316.jpg')">
 <center>
 
         <table>
             <tr>
-                <th>Имя</th>
-                <th>Тип организации</th>
-                <th>Адресс</th>
-                <th>Номер телефона</th>
+                <th>Название</th>
+                <th>Исполнение</th>
+                <th>Дата создания</th>
+                <th>Размер</th>
+                <th>Художник</th>
             </tr>
 
-            {% for owner in owners %}
+            {% for artwork in artworks %}
                 <tr>
-                    <td>{{ owner.name }}</td>
-                    <td>{{ owner.type_of_organization }}</td>
-                    <td>{{ owner.address }}</td>
-                    <td>{{ owner.phone_number }}</td>
+                    <td>{{ artwork.name }}</td>
+                    <td>{{ artwork.execution }}</td>
+                    <td>{{ artwork.date_of_create }}</td>
+                    <td>{{ artwork.size }}</td>
+                    <td>{{ artwork.artist.name }}</td>
                 </tr>
             {% endfor %}
 

@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-nfkdjfkdljf
 
+<body style="background-image: url('https://i.pinimg.com/originals/32/fd/6e/32fd6e742019beccda4acfc556820450.jpg')">
+<center>
+        <div class="container-fluid">
+            <div class="row" style="height: 400px">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <form class="rounded" method="post"
+                          style="background: rgba(0,0,0,.5)">
+                        <div class="form-group">
+                            <br>
+                            <label for="exampleInputEmail1"><h3 style="color: lavender">Выберите действие</h3></label>
+                            <br>
+                            <a href="{% url 'owner' %}" class="btn btn-outline-light my-2" style="width: 300px">
+                                Информация о владельцах
+                            </a>
+                            <br>
+                            <a href="{% url 'exhibition' %}" class="btn btn-outline-light my-2" style="width: 300px">
+                                Информация о выставках
+                            </a>
+                            <br>
+                            <a href="{% url 'exhibition_hall' %}" class="btn btn-outline-light my-2" style="width: 300px">
+                                Информация о выставочных центрах
+                            </a>
+                            <br>
+                            <a href="{% url 'artist' %}" class="btn btn-outline-light my-2" style="width: 300px">
+                                Информация о художниках
+                            </a>
+                            <br>
+                            <a href="{% url 'artwork' %}" class="btn btn-outline-light my-2" style="width: 300px">
+                                Информация о работах
+                            </a>
+                            <br>
+                            <a href="{% url 'exhibition_hall_in_city' %}" class="btn btn-outline-light my-2" style="width: 300px">
+                                Список выставочных залов в городе
+                            </a>
+                            <br>
+                            <a href="{% url 'exhibitions_artists' %}" class="btn btn-outline-light my-2" style="width: 300px">
+                                Список участников и их работы</br> заданной выставки
+                            </a>
+                            <br>
+                            <a href="{% url 'now_exhibitions' %}" class="btn btn-outline-light my-2" style="width: 300px">
+                                Выставки проходящие</br> в данный момент
+                            </a>
+                            <br>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </center>
 
 </body>
 </html>

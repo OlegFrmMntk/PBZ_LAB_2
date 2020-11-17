@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:opacity="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о выставках и художниках</title>
+    <style>
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-radius: 10px;
+            border-spacing: 0;
+            text-align: center;
+        }
+
+        th {
+            background: #BCEBDD;
+            color: white;
+            text-shadow: 0 1px 1px #2D2020;
+            padding: 10px 20px;
+        }
+
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+            border-right: none;
+        }
+
+        td {
+            padding: 10px 20px;
+            background: #F8E391;
+        }
+
+        tr:last-child td:first-child {
+            border-radius: 0 0 0 10px;
+        }
+
+        tr:last-child td:last-child {
+            border-radius: 0 0 10px 0;
+        }
+
+        tr td:last-child {
+            border-right: none;
+        }
+
+        body {
+            -moz-background-size: 100%; /* Firefox 3.6+ */
+            -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+            -o-background-size: 100%; /* Opera 9.6+ */
+            background-size: 100%; /* Современные браузеры */
+        }
+    </style>
+</head>
+    <body style="background-image: url('https://sm-news.ru/wp-content/uploads/2020/09/24/image-9.png')">
+
+<center>
+        <div class="container-fluid">
+            {% if flag %}
+            <div class="row" style="height: 400px">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <form class="rounded" method="POST"
+                          style="background: rgba(0,0,0,.5)">
+                        {% csrf_token %}
+                        <div class="form-group">
+
+                            <input class="form-control mr-sm-2" type="text" placeholder="Введите название выставки" name='exhibition_name'
+                                   aria-label="exhibiton_name" style="width: 300px">
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-outline-light mr-sm-2">Ввести</button>
+                            <br>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </center>
+{% else %}
+                <center>
+
+        <table>
+            <tr>
+                <th>Название</th>
+                <th>Тип</th>
+                <th>Дата начала</th>
+                <th>Дата конца</th>
+                <th>Название работы</th>
+                <th>Исполнение</th>
+                <th>ФИО автора</th>
+                <th>Возраст автора</th>
+                <th>Дата создания</th>
+            </tr>
+
+            <tr>
+                {% for artwork in artworks %}
+                    <tr>
+                        <td>{{ exhibition.name }}</td>
+                        <td>{{ exhibition.type }}</td>
+                        <td>{{ exhibition.start_date }}</td>
+                        <td>{{ exhibition.end_date }}</td>
+                        <td>{{ artwork.name }}</td>
+                        <td>{{ artwork.execution }}</td>
+                        <td>{{ artwork.artist.name }}</td>
+                        <td>{{ artwork.artist.date_of_birth }}</td>
+                        <td>{{ artwork.date_of_create }}</td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </table>
+
+    </center>
+
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:opacity="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о выставочных залах в городе</title>
+    <style>
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-radius: 10px;
+            border-spacing: 0;
+            text-align: center;
+        }
+
+        th {
+            background: #BCEBDD;
+            color: white;
+            text-shadow: 0 1px 1px #2D2020;
+            padding: 10px 20px;
+        }
+
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+            border-right: none;
+        }
+
+        td {
+            padding: 10px 20px;
+            background: #F8E391;
+        }
+
+        tr:last-child td:first-child {
+            border-radius: 0 0 0 10px;
+        }
+
+        tr:last-child td:last-child {
+            border-radius: 0 0 10px 0;
+        }
+
+        tr td:last-child {
+            border-right: none;
+        }
+
+        body {
+            -moz-background-size: 100%; /* Firefox 3.6+ */
+            -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+            -o-background-size: 100%; /* Opera 9.6+ */
+            background-size: 100%; /* Современные браузеры */
+        }
+    </style>
+</head>
+<body style="background-image: url('https://stage.super.ru/upload/20196/5dafb74c26a646ff7c366efd042878c7-1400.jpg   ')">
+
+<center>
+        <div class="container-fluid">
+            {% if flag %}
+            <div class="row" style="height: 400px">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <form class="rounded" method="POST"
+                          style="background: rgba(0,0,0,.5)">
+                        {% csrf_token %}
+                        <div class="form-group">
+
+                            <input class="form-control mr-sm-2" type="text" placeholder="Введите название города" name='city_name'
+                                   aria-label="city_name" style="width: 300px">
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-outline-light mr-sm-2">Ввести</button>
+                            <br>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </center>
+{% else %}
+                <center>
+                <table>
+            <tr>
+                <th>Название</th>
+                <th>Площадь</th>
+                <th>Номер телефона</th>
+                <th>Владелец</th>
+            </tr>
+
+            {% for exhibition_hall in exhibition_halls %}
+                <tr>
+                    <td>{{ exhibition_hall.name }}</td>
+                    <td>{{ exhibition_hall.area }}</td>
+                    <td>{{ exhibition_hall.phone_number }}</td>
+                    <td>{{ exhibition_hall.owner.name }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+
+
+    </center>
+
+{% endif %}
+</body>
+</html>
